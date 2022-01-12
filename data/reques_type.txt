@@ -1,0 +1,20 @@
+#图片
+file = {'file': ("timg.jpg", open(r'C:\Users\CRSC\Pictures\QQplayerPic\timg.jpg', 'rb'))}
+response = requests.post("https://127.0.0.1:8989/getimg/", data=None, files=files, verify=False, stream=True)
+print(response.status_code)# 返回数据代码
+print(response.text)
+                 
+# 视频
+files = {'file': ("1.mp4", open(r'C:\Users\CRSC\Pictures\QQplayerPic\1.mp4', 'rb'))}
+response = requests.post("https://127.0.0.1:8989/getmp4/", data=None, files=files, verify=False, stream=True)
+print(response.status_code)
+print(response.text)
+                                        
+# json数据
+res = re.post("https://127.0.0.1:8989/delcall/", json=json.dumps({"data":1}),verify=False)  
+# json=json.loads(response.text),# response.text是字符串
+                                                        
+data = {"code": "11", "seq": "12", "subName": "13"}
+with requests.Session() as pt:# with保证数据安全---推荐此方式
+s = pt.post("https://127.0.0.1:8989/downloadPlan/", json=data, verify=False, stream=True)#
+'
